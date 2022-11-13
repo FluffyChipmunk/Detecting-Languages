@@ -16,6 +16,10 @@ public class Language {
     {
 
     } //constructor: need to initialize the arrays
+    //to implement smoothing, ur array just starts as
+    //counts[26] = {27, 27, 27, .... 27}
+    //instead of
+    //counts[26] = {0, 0, 0 ... 0}
 
     /*
     public int[][] loadLanguage(String name, File f)
