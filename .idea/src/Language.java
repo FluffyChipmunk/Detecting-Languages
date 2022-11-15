@@ -21,12 +21,23 @@ public class Language {
     //instead of
     //counts[26] = {0, 0, 0 ... 0}
 
+
+
     /*
-    public int[][] loadLanguage(String name, File f)
+    public void loadLanguage(String name, File f)
     {
         reads the file and returns 2d array of frequencies
+        if we want to have multiple files as input, loadlanguage could add to existing arrays
     }
     */
+
+    /*
+    public File cleanFile(File f)
+    {
+        remove the punctuation and spaces from the file
+        according to wikipedia's article about frequency analysis, letter freqencies should hold if it's just a single string of characters
+    }
+     */
 
     /*
     public double probabilityOf(String sentence)
