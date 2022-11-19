@@ -3,9 +3,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        File f = new File("");
-        System.out.println(new File("src/TrainingTexts/ENGdeclaration.txt").getAbsolutePath());
-        //English.cleanFile(f);
+        Language English = new Language("English");
+
+        File f = new File(".idea/src/TrainingTexts/ENGdeclaration.txt");
+
+        English.cleanFile(f);
 
 
 

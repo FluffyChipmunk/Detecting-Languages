@@ -82,7 +82,7 @@ public class Language {
             System.exit(1);
         }
 
-        String filename = "cleaned"+f+".txt";
+        String filename = ".idea/src/cleaned"+f.getName();
         File cleaned = new File(filename);
         try {
             if (cleaned.createNewFile()) //try to create new file to store the cleaned version of text if not yet created
