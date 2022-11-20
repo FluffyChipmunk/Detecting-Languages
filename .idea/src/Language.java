@@ -1,6 +1,7 @@
 
 import java.util.*;
 import java.io.*;
+import java.text.*;
 public class Language {
     //fields
 
@@ -16,7 +17,18 @@ public class Language {
     {
         languageName = name;
         countLetters = new int[26];
+        for(int i=0;i<countLetters.length;i++)
+        {
+            i = 27;
+        } //initialize countLetters[] = (27,27,...,27}
         countPairs = new int[26][26];
+        for(int i=0;i<countPairs.length;i++)
+        {
+            for(int j =0;j<countPairs.length;j++)
+            {
+                countPairs[i][j]=1;
+            }
+        } //initialize countPairs[][] = {1,1...1}
         pairProbability = new int[26][26];
 
     } //constructor: need to initialize the arrays
@@ -26,14 +38,13 @@ public class Language {
     //counts[26] = {0, 0, 0 ... 0}
 
 
-    /*
     public void loadLanguage(File f)
     {
-        cleanFile(f);
+        File cleanedFile = cleanFile(f);
         Scanner fin = null;
         try
         {
-            fin = new Scanner(new File("src/training texts/ENGdeclaration.txt"));
+            fin = new Scanner(cleanedFile);
         }
         catch(Exception E)
         {
@@ -46,13 +57,8 @@ public class Language {
         {
             try
             {
-             String s = fin.next();
-             System.out.println(s);
-             if(s.equals("e")||s.equals("E"))
-             {
-                 count++;
-             }
-
+            char c = fin.next().charAt(0);
+            countLetters[c-97]++; //97 is ascii for 'a'
             }
             catch(Exception E)
             {
@@ -61,12 +67,12 @@ public class Language {
 
         }
         fin.close();
-        System.out.println("Done: "+ " how many chars: "+count);
+        System.out.println(Arrays.toString(countLetters));
 
-        reads the file and returns 2d array of frequencies
-        if we want to have multiple files as input, loadlanguage could add to existing arrays
+        //reads the file and adds to 2d array of frequencies
+        //if we want to have multiple files as input, loadlanguage could add to existing arrays
     }
-    */
+
 
 
     public File cleanFile(File f)
@@ -93,6 +99,7 @@ public class Language {
             else
             {
                 System.out.println("File already exists.");
+                return cleaned;
             }
         }
         catch (Exception e)
@@ -116,11 +123,11 @@ public class Language {
             {
                 try
                 {
-                    char c = fin.next().charAt(0);
+                    char c = Normalizer.normalize(fin.next().toLowerCase(),Normalizer.Form.NFD).charAt(0); //normalizer gets rid of accents
                     if(Character.isLetter(c))
                     {
                         fout.write(c);
-                    } //only writes the text into the cleaned file if it's a letter
+                    } //only writes the text into the cleaned file if it's a letter, turns everything lowercase
 
                 }
                 catch(Exception E)

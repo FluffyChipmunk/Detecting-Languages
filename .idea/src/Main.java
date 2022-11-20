@@ -7,7 +7,7 @@ public class Main {
 
         File f = new File(".idea/src/TrainingTexts/ENGdeclaration.txt");
 
-        English.cleanFile(f);
+        English.loadLanguage(f);
 
 
 
