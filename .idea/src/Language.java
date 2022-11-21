@@ -4,7 +4,8 @@ import java.io.*;
 import java.text.*;
 public class Language {
     //fields
-
+    int totalLetters;
+    // number of letters used to compile language data
     int[] countLetters;
     //countLetters[0] = number of a's in the text
     int[][] countPairs;
@@ -16,6 +17,7 @@ public class Language {
     public Language (String name)
     {
         languageName = name;
+        totalLetters = 0;
         countLetters = new int[26];
         for(int i=0;i<countLetters.length;i++)
         {
@@ -30,7 +32,6 @@ public class Language {
             }
         } //initialize countPairs[][] = {1,1...1}
         pairProbability = new double[26][26];
-
     } //constructor: need to initialize the arrays
     //to implement smoothing, ur array just starts as
     //counts[26] = {27, 27, 27, .... 27}
@@ -51,24 +52,37 @@ public class Language {
             System.out.println(E);
             System.exit(1);
         }
-        int count=0; //counts chars
         fin.useDelimiter("");
         while(fin.hasNext())
         {
-            try
-            {
-            char c = fin.next().charAt(0);
-            countLetters[c-'a']++;
+            try {
+                String str = fin.next(); //creates string of cleaned file
+
+                for (int i = 0; i < str.length() - 1; i++)
+                {
+                    char c1 = str.charAt(i);
+                    char c2 = str.charAt(i + 1);
+                    countPairs[c1 - 'a'][c2 - 'a']++; //counts the letter pair of the first two chars of the iteration
+                    countLetters[c1 -'a']++; //counts the letter of the first char of the iteration
+                }
+
+                countLetters[str.charAt(str.length() - 1) - 'a']++; //counts the last char of the iteration
+                totalLetters += str.length(); //updates number of letters used to compile language data
+
+                for (int i = 0; i < pairProbability.length; i++) //updates pairProbability
+                {
+                    for (int j = 0; j < pairProbability[0].length; j++)
+                    {
+                        pairProbability[i][j] = countPairs[i][j] / totalLetters;
+                    }
+                }
             }
             catch(Exception E)
             {
                 System.out.println(E);
             }
-
         }
         fin.close();
-        System.out.println(Arrays.toString(countLetters));
-
         //reads the file and adds to 2d array of frequencies
         //if we want to have multiple files as input, loadlanguage could add to existing arrays
     }
@@ -154,9 +168,9 @@ public class Language {
         sentence.replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
         double prob = 1.0;
         for(int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
-            char char1 = sentence.charAt(i);
-            char char2 = sentence.charAt(i + 1);
-            prob *= pairProbability[char1 - 'a'][char2 - 'a']; //finds probability by accessing the pairProbability field
+            char c1 = sentence.charAt(i);
+            char c2 = sentence.charAt(i + 1);
+            prob *= pairProbability[c1 - 'a'][c2 - 'a']; //finds probability by accessing the pairProbability field
         }
         return prob;
     }

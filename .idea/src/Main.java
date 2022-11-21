@@ -10,6 +10,5 @@ public class Main {
         English.loadLanguage(f);
 
 
-
     }
 }
