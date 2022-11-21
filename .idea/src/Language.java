@@ -9,7 +9,7 @@ public class Language {
     //countLetters[0] = number of a's in the text
     int[][] countPairs;
     //countPairs[0][0] = number of "aa"'s in the text
-    int[][] pairProbability;
+    double[][] pairProbability;
     //pairProbability[0][0] = probability of "aa" in the text
     String languageName;
 
@@ -29,7 +29,7 @@ public class Language {
                 countPairs[i][j]=1;
             }
         } //initialize countPairs[][] = {1,1...1}
-        pairProbability = new int[26][26];
+        pairProbability = new double[26][26];
 
     } //constructor: need to initialize the arrays
     //to implement smoothing, ur array just starts as
@@ -58,7 +58,7 @@ public class Language {
             try
             {
             char c = fin.next().charAt(0);
-            countLetters[c-97]++; //97 is ascii for 'a'
+            countLetters[c-'a']++;
             }
             catch(Exception E)
             {
@@ -148,31 +148,16 @@ public class Language {
         //according to wikipedia's article about frequency analysis, letter freqencies should hold if it's just a single string of characters
     }
 
-
-    /*
-    public double probabilityOf(String sentence)
-    {
-         prob[first letter of sentence][second letter]*prob[second letter][third letter]* ...
-
+    public double probabilityOf(String sentence) { //returns probability of a sentence appearing in a given language
+        sentence.toLowerCase();
+        sentence.trim();
+        sentence.replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
+        double prob = 1.0;
+        for(int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
+            char char1 = sentence.charAt(i);
+            char char2 = sentence.charAt(i + 1);
+            prob *= pairProbability[char1 - 'a'][char2 - 'a']; //finds probability by accessing the pairProbability field
+        }
+        return prob;
     }
-    */
-
-    /*
-    public int countLetters(char c)
-    {
-
-    }
-    */
-
-
-    /*
-    public int countLetterPair(char a, char b)
-    {
-
-    }
-     */
-
-
-
-
 }
