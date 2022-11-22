@@ -8,6 +8,10 @@ public class Main {
         File f = new File(".idea/src/TrainingTexts/ENGdeclaration.txt");
 
         English.loadLanguage(f);
+        List<Language> L = new ArrayList<>();
+        L.add(English);
+
+
 
 
     }

@@ -38,6 +38,11 @@ public class Language {
     //instead of
     //counts[26] = {0, 0, 0 ... 0}
 
+    public String toString()
+    {
+        return languageName;
+    }
+
 
     public void loadLanguage(File f)
     {
