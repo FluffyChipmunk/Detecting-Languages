@@ -13,8 +13,6 @@ public class Main {
         ArrayList<Language> L = new ArrayList<>();
         L.add(English);
         System.out.println(English);
-
-
-
+        
     }
 }
