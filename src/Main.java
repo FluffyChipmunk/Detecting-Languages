@@ -15,4 +15,11 @@ public class Main {
         System.out.println(English);
         
     }
+
+    /*public Language detectLanguage(List<Language> languages, String sentence)
+    {
+        go through arraylist of languages and return the language that has the highest probability of generating the sentence
+    }
+    */
+
 }
