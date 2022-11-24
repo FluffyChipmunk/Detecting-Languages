@@ -11,7 +11,7 @@ public class Language {
     int[][] countPairs;
     //countPairs[0][0] = number of "aa"'s in the text
     double[][] pairProbability;
-    //pairProbability[0][0] = probability of "aa" in the text
+    //pairProbability[0][0] = log(probability of "aa" in the text)
     String languageName;
 
     public Language (String name)
@@ -73,7 +73,7 @@ public class Language {
                 {
                     for (int j = 0; j < pairProbability[0].length; j++)
                     {
-                        pairProbability[i][j] = countPairs[i][j] / totalLetters;
+                        pairProbability[i][j] = Math.log(countPairs[i][j] / totalLetters);
                     }
                 }
             }
@@ -166,12 +166,18 @@ public class Language {
         sentence.toLowerCase();
         sentence.trim();
         sentence.replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
-        double prob = 1.0;
+        double prob = 0.0;
         for(int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
             char c1 = sentence.charAt(i);
             char c2 = sentence.charAt(i + 1);
-            prob *= pairProbability[c1 - 'a'][c2 - 'a']; //finds probability by accessing the pairProbability field
+            prob += pairProbability[c1 - 'a'][c2 - 'a']; //finds probability by accessing the pairProbability field
         }
         return prob;
+    }
+
+    public void printPairProbs() {
+        for (double[] D : pairProbability) {
+            System.out.println(Arrays.toString(D));
+        }
     }
 }
