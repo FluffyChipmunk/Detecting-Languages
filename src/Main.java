@@ -6,14 +6,16 @@ public class Main {
 
         Language English = new Language("English");
 
-        File f = new File("src/TrainingTexts/ENGdeclaration.txt");
+        File f = new File("/Users/johnjoire/Documents/GitHub/Detecting-Languages/src/TrainingTexts/ENGdeclaration.txt");
 
         English.loadLanguage(f);
 
         ArrayList<Language> L = new ArrayList<>();
         L.add(English);
         System.out.println(English);
-        English.printPairProbs();
+        System.out.println(English.probabilityOf("games lessons tutorials Games Lessons Tutorials Improve Communication Skills Free Grammar Games Free Grammar Videos CoursesSpeak smart"));
+        System.out.println(English.probabilityOf("jeux leçon tutoriels Jeux leçons tutoriels Améliorer les compétences en communication Jeux de grammaire gratuitsVidéos de grammairegratuitesCourParlezintelligemment"));
+
     }
 
     /*public Language detectLanguage(List<Language> languages, String sentence)

@@ -47,17 +47,15 @@ public class Language {
         {
             fin = new Scanner(cleanedFile);
         }
-        catch(Exception E)
+        catch (Exception E)
         {
             System.out.println(E);
             System.exit(1);
         }
-        fin.useDelimiter("");
-        while(fin.hasNext())
-        {
+        while(fin.hasNext()) {
             try {
                 String str = fin.next(); //creates string of cleaned file
-
+                System.out.println(str);
                 for (int i = 0; i < str.length() - 1; i++)
                 {
                     char c1 = str.charAt(i);
@@ -73,7 +71,7 @@ public class Language {
                 {
                     for (int j = 0; j < pairProbability[0].length; j++)
                     {
-                        pairProbability[i][j] = Math.log(countPairs[i][j] / totalLetters);
+                        pairProbability[i][j] = Math.log(1.0 * countPairs[i][j] / totalLetters);
                     }
                 }
             }
@@ -144,7 +142,7 @@ public class Language {
                     } //only writes the text into the cleaned file if it's a letter, turns everything lowercase
 
                 }
-                catch(Exception E)
+                catch (Exception E)
                 {
                     System.out.println(E);
                 }
@@ -163,11 +161,14 @@ public class Language {
     }
 
     public double probabilityOf(String sentence) { //returns probability of a sentence appearing in a given language
-        sentence.toLowerCase();
-        sentence.trim();
-        sentence.replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
+        sentence = sentence.toLowerCase();
+        sentence = sentence.trim();
+        sentence = sentence.replaceAll(" ","");
+        sentence = sentence.replaceAll("\\p{Punct}", ""); //makes lowercase and deletes spaces and punctuation
+        sentence = sentence.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+        System.out.println(sentence);
         double prob = 0.0;
-        for(int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
+        for (int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
             char c1 = sentence.charAt(i);
             char c2 = sentence.charAt(i + 1);
             prob += pairProbability[c1 - 'a'][c2 - 'a']; //finds probability by accessing the pairProbability field
