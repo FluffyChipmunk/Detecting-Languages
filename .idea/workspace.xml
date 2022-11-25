@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43beb067-dc8a-4695-b27f-dc344835058e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TrainingTexts/DonQuixote-English.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TrainingTexts/DonQuixote-French.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TrainingTexts/DonQuixote-Spanish.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Language.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -58,6 +61,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/TrainingTexts" />
       <recent name="$PROJECT_DIR$/.idea/src/training texts" />
       <recent name="$PROJECT_DIR$/.idea/src" />
     </key>
@@ -95,7 +99,9 @@
       <workItem from="1669068993355" duration="1948000" />
       <workItem from="1669154757332" duration="1718000" />
       <workItem from="1669331413577" duration="1097000" />
-      <workItem from="1669332543489" duration="2527000" />
+      <workItem from="1669332543489" duration="2689000" />
+      <workItem from="1669343110217" duration="958000" />
+      <workItem from="1669344073191" duration="674000" />
     </task>
     <servers />
   </component>
