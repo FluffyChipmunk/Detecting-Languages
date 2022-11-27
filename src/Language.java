@@ -4,15 +4,15 @@ import java.io.*;
 import java.text.*;
 public class Language {
     //fields
-    int totalLetters;
+    private int totalLetters;
     // number of letters used to compile language data
-    int[] countLetters;
+    private int[] countLetters;
     //countLetters[0] = number of a's in the text
-    int[][] countPairs;
+    private int[][] countPairs;
     //countPairs[0][0] = number of "aa"'s in the text
-    double[][] pairProbability;
+    private double[][] pairProbability;
     //pairProbability[0][0] = log(probability of "aa" in the text)
-    String languageName;
+    private String languageName;
 
     public Language (String name)
     {
@@ -164,6 +164,8 @@ public class Language {
     }
 
     public double probabilityOf(String sentence) { //returns probability of a sentence appearing in a given language
+
+
         sentence = sentence.toLowerCase().trim().replaceAll(" ","").replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
         sentence = Normalizer.normalize(sentence, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", ""); //removes accents from sentence
         double prob = 0.0;
@@ -172,12 +174,24 @@ public class Language {
             char c2 = sentence.charAt(i + 1);
             prob += pairProbability[c1 - 'a'][c2 - 'a'] / sentence.length(); //finds probability by accessing the pairProbability field
         }
+        if(prob ==0.0)
+        {
+            return -1*Double.MAX_VALUE;
+        }
+
         return prob;
     }
+
+
 
     public void printPairProbs() {
         for (double[] D : pairProbability) {
             System.out.println(Arrays.toString(D));
         }
+    }
+
+    public String getLanguageName()
+    {
+        return languageName;
     }
 }
