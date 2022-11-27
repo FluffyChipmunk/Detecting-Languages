@@ -39,6 +39,10 @@ public class Language {
     //counts[26] = {0, 0, 0 ... 0}
 
 
+    public String toString()
+    {
+        return languageName;
+    }
     public void loadLanguage(File f)
     {
         File cleanedFile = cleanFile(f);

@@ -5,19 +5,23 @@ public class Main {
     public static void main(String[] args) {
 
         Language English = new Language("English");
-        File f1 = new File("/Users/johnjoire/Documents/GitHub/Detecting-Languages/src/TrainingTexts/DonQuixote-English.txt");
+        File f1 = new File("src/TrainingTexts/DonQuixote-English.txt");
         English.loadLanguage(f1);
 
         Language Spanish = new Language("Spanish");
-        File f2 = new File("/Users/johnjoire/Documents/GitHub/Detecting-Languages/src/TrainingTexts/DonQuixote-Spanish.txt");
+        File f2 = new File("src/TrainingTexts/DonQuixote-Spanish.txt");
         Spanish.loadLanguage(f2);
 
         Language French = new Language("French");
-        File f3 = new File("/Users/johnjoire/Documents/GitHub/Detecting-Languages/src/TrainingTexts/DonQuixote-French.txt");
+        File f3 = new File("src/TrainingTexts/DonQuixote-French.txt");
         Spanish.loadLanguage(f3);
 
         ArrayList<Language> L = new ArrayList<>();
         L.add(English);
+        L.add(French);
+        L.add(Spanish);
+        System.out.println(detectLanguage(L, "I play many games and tutorials and have lessons everyday"));
+
         System.out.println(English);
         System.out.println(English.probabilityOf("games lessons tutorials Games Lessons Tutorials Improve Communication Skills Free Grammar Games Free Grammar Videos CoursesSpeak smart"));
         System.out.println(English.probabilityOf("jeux leçon tutoriels Jeux leçons tutoriels Améliorer les compétences en communication Jeux de grammaire gratuitsVidéos de grammairegratuitesCourParlezintelligemment"));
@@ -36,10 +40,20 @@ public class Main {
 
     }
 
-    /*public Language detectLanguage(List<Language> languages, String sentence)
+    public static Language detectLanguage(List<Language> languages, String sentence)
     {
-        go through arraylist of languages and return the language that has the highest probability of generating the sentence
+        int mostProbable =0;
+        for(int i =0; i<languages.size(); i++)
+        {
+            if(languages.get(mostProbable).probabilityOf(sentence)>languages.get(i).probabilityOf(sentence))
+            {
+                mostProbable = i;
+            }
+        }
+
+        return languages.get(mostProbable);
+        //go through arraylist of languages and return the language that has the highest probability of generating the sentence
     }
-    */
+
 
 }
