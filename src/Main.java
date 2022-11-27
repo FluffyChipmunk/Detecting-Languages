@@ -14,7 +14,7 @@ public class Main {
 
         Language French = new Language("French");
         File f3 = new File("src/TrainingTexts/DonQuixote-French.txt");
-        Spanish.loadLanguage(f3);
+        French.loadLanguage(f3);
 
         ArrayList<Language> L = new ArrayList<>();
         L.add(English);
@@ -45,7 +45,7 @@ public class Main {
         int mostProbable =0;
         for(int i =0; i<languages.size(); i++)
         {
-            if(languages.get(mostProbable).probabilityOf(sentence)>languages.get(i).probabilityOf(sentence))
+            if(languages.get(mostProbable).probabilityOf(sentence)<languages.get(i).probabilityOf(sentence))
             {
                 mostProbable = i;
             }
