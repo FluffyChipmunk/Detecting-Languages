@@ -9,7 +9,6 @@ public class Main {
         Language English = new Language("English");
         File f1 = new File("src/TrainingTexts/DonQuixote-English.txt");
 
-
         Language Spanish = new Language("Spanish");
         File f2 = new File("src/TrainingTexts/DonQuixote-Spanish.txt");
 
@@ -43,7 +42,7 @@ public class Main {
 
         //start of menu
         System.out.println("Welcome to the language detector created by Ashley Bao and John Joire");
-        System.out.println("Loading the default languages of English, Spanish, and French");
+        System.out.println("Loading the default languages of English, Spanish, and French...");
         English.loadLanguage(f1);
         Spanish.loadLanguage(f2);
         French.loadLanguage(f3);
@@ -51,17 +50,15 @@ public class Main {
         while(true)
         {
             System.out.println("MENU");
-            System.out.println("1.add language");
-            System.out.println("2.load new text files");
-            System.out.println("3.display current languages");
-            System.out.println("4.enter string you want to know the language of");
-            System.out.println("0.exit");
+            System.out.println("1. Add language");
+            System.out.println("2. Load new text files");
+            System.out.println("3. Display current languages");
+            System.out.println("4. Enter string you want to know the language of");
+            System.out.println("0. Exit");
             String input = userInput.nextLine();
-            try
-            {
+            try {
                 int choice = Integer.parseInt(input);
-                switch(choice)
-                {
+                switch (choice) {
                     case 1:
                         System.out.println("Enter language name");
                         L.add(new Language(userInput.nextLine()));
@@ -75,7 +72,7 @@ public class Main {
                         try
                         {
                             findLanguage(L,language).loadLanguage(new File(newFile));
-                            System.out.println("file loaded");
+                            System.out.println("File loaded");
                         }
                         catch(Exception E)
                         {
@@ -101,33 +98,25 @@ public class Main {
                         break;
                 }
             }
-            catch(Exception E)
-            {
+            catch(Exception E) {
                 System.out.println(E);
             }
         }
-
     }
 
-    public static Language detectLanguage(List<Language> languages, String sentence)
-    {
+    public static Language detectLanguage(List<Language> languages, String sentence) {
         int mostProbable =0;
-        for(int i =0; i<languages.size(); i++)
-        {
-            if(languages.get(mostProbable).probabilityOf(sentence)<languages.get(i).probabilityOf(sentence))
-            {
+        for (int i =0; i<languages.size(); i++) {
+            if (languages.get(mostProbable).probabilityOf(sentence)<languages.get(i).probabilityOf(sentence)) {
                 mostProbable = i;
             }
         }
-
         return languages.get(mostProbable);
         //go through arraylist of languages and return the language that has the highest probability of generating the sentence
     }
 
-    public static Language findLanguage(List<Language> languages, String languageName)
-    {
-        for(Language L: languages)
-        {
+    public static Language findLanguage(List<Language> languages, String languageName) {
+        for (Language L: languages) {
             if(L.getLanguageName().equalsIgnoreCase(languageName))
                 return L;
         }
