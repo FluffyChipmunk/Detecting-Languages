@@ -1,9 +1,9 @@
 # Detecting-Languages
 
 
-<h3>Title: Detecting Languages</h3>
-<h3>Authors: Ashley Bao and John Joire</h3>
-<h3>Class: COSC112 Fall 2022 Amherst College</h3>
+<h3>Detecting Languages</h3>
+<h3>By Ashley Bao and John Joire</h3>
+<h3>COSC112 Fall 2022 Amherst College</h3>
 <h3>Abstract:</h3> 
 We create a program that can guess what language a given sentence is in based on letter pair frequencies of languages in training texts. We have Don Quixote as example training files. The program counts letter pairs in each language's Don Quixote. Then, it can calculate the probability of a sentence appearing in that language by multiplying the probability of the sentence's letter pairs in the given language.
 <h3>Project Files</h3>
