@@ -92,6 +92,9 @@ public class Main {
                         System.out.println(detectLanguage(L,sentence));
                         break;
                     case 0:
+                        EndScreen endScreen = new EndScreen();
+                        endScreen.DisplayScreen();
+                        endScreen.paint(endScreen.getGraphics());
                         System.exit(0);
                     default:
                         System.out.println("Not a choice");
