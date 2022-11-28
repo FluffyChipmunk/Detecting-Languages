@@ -8,20 +8,21 @@ public class Main {
 
         Language English = new Language("English");
         File f1 = new File("src/TrainingTexts/DonQuixote-English.txt");
-        English.loadLanguage(f1);
+
 
         Language Spanish = new Language("Spanish");
         File f2 = new File("src/TrainingTexts/DonQuixote-Spanish.txt");
-        Spanish.loadLanguage(f2);
 
         Language French = new Language("French");
         File f3 = new File("src/TrainingTexts/DonQuixote-French.txt");
-        French.loadLanguage(f3);
 
         ArrayList<Language> L = new ArrayList<>();
         L.add(English);
         L.add(French);
         L.add(Spanish);
+
+        /* For testing purposes only below
+
         System.out.println(detectLanguage(L, "I play many games and tutorials and have lessons everyday"));
 
         System.out.println(English);
@@ -38,11 +39,18 @@ public class Main {
         System.out.println(French.probabilityOf("games lessons tutorials Games Lessons Tutorials Improve Communication Skills Free Grammar Games Free Grammar Videos CoursesSpeak smart"));
         System.out.println(French.probabilityOf("jeux leçon tutoriels Jeux leçons tutoriels Améliorer les compétences en communication Jeux de grammaire gratuitsVidéos de grammairegratuitesCourParlezintelligemment"));
         System.out.println(French.probabilityOf("juegos, lecciones, tutoriales. Juegos, Lecciones, Tutoriales. Mejorar las habilidades de comunicación. Juegos de gramática gratis. Videos de gramática gratis. Cursos: Habla inteligente,"));
+        */
 
         //start of menu
         System.out.println("Welcome to the language detector created by Ashley Bao and John Joire");
+        System.out.println("Loading the default languages of English, Spanish, and French");
+        English.loadLanguage(f1);
+        Spanish.loadLanguage(f2);
+        French.loadLanguage(f3);
+
         while(true)
         {
+            System.out.println("MENU");
             System.out.println("1.add language");
             System.out.println("2.load new text files");
             System.out.println("3.display current languages");
