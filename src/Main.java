@@ -47,7 +47,6 @@ public class Main {
             System.out.println("2.load new text files");
             System.out.println("3.display current languages");
             System.out.println("4.enter string you want to know the language of");
-
             System.out.println("0.exit");
             String input = userInput.nextLine();
             try
@@ -59,9 +58,7 @@ public class Main {
                         System.out.println("Enter language name");
                         L.add(new Language(userInput.nextLine()));
                         System.out.println("Added.");
-                        System.out.println(L.get(L.size()-1).probabilityOf("juegos, lecciones, tutoriales. Juegos, Lecciones, Tutoriales. Mejorar las habilidades de comunicación. Juegos de gramática gratis. Videos de gramática gratis. Cursos: Habla inteligente,"));
                         break;
-                    //still need to test case 2
                         case 2:
                         System.out.println("What is the address of the text file?");
                         String newFile = userInput.nextLine();
@@ -74,6 +71,7 @@ public class Main {
                         }
                         catch(Exception E)
                         {
+                            System.out.println("File not found");
                             System.out.println(E);
                         }
                         break;
@@ -81,13 +79,14 @@ public class Main {
                         System.out.println(L);
                         break;
                     case 4:
+                        System.out.println("The longer the string, the more accurate the guess.");
                         String sentence = userInput.nextLine();
                         System.out.println(detectLanguage(L,sentence));
                         break;
                     case 0:
                         System.exit(0);
                     default:
-                        System.out.println("not a choice");
+                        System.out.println("Not a choice");
                         break;
                 }
             }
@@ -106,8 +105,6 @@ public class Main {
         {
             if(languages.get(mostProbable).probabilityOf(sentence)<languages.get(i).probabilityOf(sentence))
             {
-                System.out.println(languages.get(mostProbable).probabilityOf(sentence));
-                System.out.println(languages.get(i).probabilityOf(sentence));
                 mostProbable = i;
             }
         }
@@ -125,6 +122,5 @@ public class Main {
         }
         return null;
     }
-
 
 }
