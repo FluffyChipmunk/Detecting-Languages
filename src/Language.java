@@ -174,11 +174,10 @@ public class Language {
             char c2 = sentence.charAt(i + 1);
             prob += pairProbability[c1 - 'a'][c2 - 'a'] / sentence.length(); //finds probability by accessing the pairProbability field
         }
-        if(prob ==0.0)
+        if(prob ==0.0) //to account for a language that hasn't been trained yet
         {
             return -1*Double.MAX_VALUE;
         }
-
         return prob;
     }
 

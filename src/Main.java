@@ -5,7 +5,6 @@ public class Main {
     static Scanner userInput = new Scanner(System.in);
     public static void main(String[] args) {
 
-
         Language English = new Language("English");
         File f1 = new File("src/TrainingTexts/DonQuixote-English.txt");
 
