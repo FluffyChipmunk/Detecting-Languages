@@ -174,15 +174,11 @@ public class Language {
             char c2 = sentence.charAt(i + 1);
             prob += pairProbability[c1 - 'a'][c2 - 'a'] / sentence.length(); //finds probability by accessing the pairProbability field
         }
-        if(prob ==0.0)
-        {
-            return -1*Double.MAX_VALUE;
+        if(prob == 0.0) {
+            return -1 * Double.MAX_VALUE;
         }
-
         return prob;
     }
-
-
 
     public void printPairProbs() {
         for (double[] D : pairProbability) {
