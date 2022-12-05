@@ -21,6 +21,7 @@ public class EndScreen extends Canvas{
     }
 
         public void paint(Graphics g){
+            super.paint(g);
             g.setColor(Color.BLACK);
             g.drawString("Thank You For Using Our Detector",100,200); //writing the face and suit for the card
             g.drawString("Made by Ashley and John", 100, 250);//add our names, i guess credits??
