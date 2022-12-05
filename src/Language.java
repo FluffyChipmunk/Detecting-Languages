@@ -166,7 +166,7 @@ public class Language {
     public double probabilityOf(String sentence) { //returns probability of a sentence appearing in a given language
 
 
-        sentence = sentence.toLowerCase().trim().replaceAll(" ","").replaceAll("\\p{Punct}",""); //makes lowercase and deletes spaces and punctuation
+        sentence = sentence.toLowerCase().trim().replaceAll(" ", "").replaceAll("\\p{Punct}", ""); //makes lowercase and deletes spaces and punctuation
         sentence = Normalizer.normalize(sentence, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", ""); //removes accents from sentence
         double prob = 0.0;
         for (int i = 0; i < sentence.length() - 1; i++) { //iterates through each letter pair of the sentence
@@ -174,20 +174,18 @@ public class Language {
             char c2 = sentence.charAt(i + 1);
             prob += pairProbability[c1 - 'a'][c2 - 'a'] / sentence.length(); //finds probability by accessing the pairProbability field
         }
-        if(prob == 0.0) {
+        if (prob == 0.0) {
             return -1 * Double.MAX_VALUE;
+            if (prob == 0.0) //to account for a language that hasn't been trained yet
+            {
+                return -1 * Double.MAX_VALUE;
+            }
+            return prob;
         }
-        return prob;
+        return -1.0;
     }
-
-    public void printPairProbs() {
-        for (double[] D : pairProbability) {
-            System.out.println(Arrays.toString(D));
-        }
-    }
-
-    public String getLanguageName()
-    {
+    public String getLanguageName() {
         return languageName;
     }
+    
 }
