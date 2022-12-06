@@ -14,7 +14,6 @@ We created a program that can guess what language a given sentence is in based o
 <li>IntelliJ IDEA 2022.2.1 Ultimate Edition</li>
 <li>Java 18.0.2.1</li>
 <h3>How to Use</h3>
-How you work with your program. Example.
-Sample 5 lines of your data.txt input file(s).
+Upon opening the main, the user is given the option to create a language, load new text files into existing languages, display existing languages, or type in text to be identified. The latter feature is the bulk of the program, and can be used to identify what language the user is being “spoken,” or typed in.
 <h3>References</h3> 
 Don Quixote by Miguel de Cervantes
