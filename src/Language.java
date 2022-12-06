@@ -175,7 +175,6 @@ public class Language {
             prob += pairProbability[c1 - 'a'][c2 - 'a'] / sentence.length(); //finds probability by accessing the pairProbability field
         }
         if (prob == 0.0) {
-            return -1 * Double.MAX_VALUE;
             if (prob == 0.0) //to account for a language that hasn't been trained yet
             {
                 return -1 * Double.MAX_VALUE;
